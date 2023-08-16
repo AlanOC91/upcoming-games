@@ -23,7 +23,7 @@ if (!$games) {
     //Sort the Games
     $games = $igdb->sort_list($games);
     //Set Cache
-    $cache->set($cacheKey, $games);
+    //$cache->set($cacheKey, $games);
 }
 ?>
 
