@@ -1,30 +1,20 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-//Check Cache
-$cache = new UpcomingGames\Cache('cache', 21600); // Cache data for 6 hours (21600 seconds)
 $platforms = [48, 167]; // PS4 and PS5
-$cacheKey = implode(',', $platforms);
-$games = $cache->get($cacheKey);
-
-//If no Cache exists, pull from IGDB API
-if (!$games) {
-    $clientID = $_ENV['CLIENT_ID'];
-    $clientSecret = $_ENV['CLIENT_SECRET'];
-    //Auth
-    $auth = new UpcomingGames\Authentication($clientID, $clientSecret);
-    $token = $auth->getAccessToken();
-    if (!$token) {
-        die('Failed to obtain access token.');
-    }
-    //IGDB Retrieval
-    $igdb = new UpcomingGames\IGDB($clientID, $token);
-    $games = $igdb->fetchUpcomingGames($platforms);
-    //Sort the Games
-    $games = $igdb->sort_list($games);
-    //Set Cache
-    //$cache->set($cacheKey, $games);
+$clientID = $_ENV['CLIENT_ID'];
+$clientSecret = $_ENV['CLIENT_SECRET'];
+//Auth
+$auth = new UpcomingGames\Authentication($clientID, $clientSecret);
+$token = $auth->getAccessToken();
+if (!$token) {
+    die('Failed to obtain access token.');
 }
+//IGDB Retrieval
+$igdb = new UpcomingGames\IGDB($clientID, $token);
+$games = $igdb->fetchUpcomingGames($platforms);
+//Sort the Games
+$games = $igdb->sort_list($games);
 ?>
 
 <!DOCTYPE html>
