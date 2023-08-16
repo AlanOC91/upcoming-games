@@ -6,6 +6,8 @@ A simple PHP application that fetches and displays upcoming game releases for Pl
 
 This is the `vercel` branch. This branch is used to host the application on [Vercel](https://vercel.com/). 
 
+This is the **default** branch for this repository.
+
 Other branches:
 
 `native-php` = This branch contains the application written in native PHP. It is not intended to be hosted on Vercel. It's purpose is to be hosted on a regular PHP host.
