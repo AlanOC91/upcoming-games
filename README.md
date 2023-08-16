@@ -2,6 +2,14 @@
 
 A simple PHP application that fetches and displays upcoming game releases for PlayStation 4 and PlayStation 5 using the IGDB API.
 
+## Branches
+
+This is the `vercel` branch. This branch is used to host the application on [Vercel](https://vercel.com/). 
+
+Other branches:
+
+`native-php` = This branch contains the application written in native PHP. It is not intended to be hosted on Vercel. It's purpose is to be hosted on a regular PHP host.
+
 ## Features
 
 - Retrieves upcoming game releases for PS4 and PS5 (platforms can be changed).
