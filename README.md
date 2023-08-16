@@ -2,7 +2,7 @@
 
 A simple PHP application that fetches and displays upcoming game releases for PlayStation 4 and PlayStation 5 using the IGDB API.
 
-## Branched
+## Branches
 
 This is the `native-php` branch. It needs to be hosted on a native PHP server.
 
