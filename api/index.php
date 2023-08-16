@@ -34,7 +34,7 @@ $games = $igdb->sort_list($games);
 
     <!-- Logo -->
     <div class="d-flex justify-content-center">
-        <a href="<?php echo $_ENV['APP_URL']; ?>"><img src="/../assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
+        <a href="<?php echo $_ENV['APP_URL']; ?>"><img src="/assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
     </div>
 
     <h1 class="mb-4">Upcoming Game Releases</h1>
