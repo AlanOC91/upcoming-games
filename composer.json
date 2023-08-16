@@ -1,4 +1,7 @@
 {
+  "name": "AlanOC91/upcominggames",
+  "description": "A project to list upcoming games from IGDB.",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "UpcomingGames\\": "classes/"
