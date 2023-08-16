@@ -1,20 +1,34 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require 'vendor/autoload.php';
 
+//Dot ENV
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+//Check Cache
+$cache = new UpcomingGames\Cache('cache', 21600); // Cache data for 6 hours (21600 seconds)
 $platforms = [48, 167]; // PS4 and PS5
-$clientID = $_ENV['CLIENT_ID'];
-$clientSecret = $_ENV['CLIENT_SECRET'];
-//Auth
-$auth = new UpcomingGames\Authentication($clientID, $clientSecret);
-$token = $auth->getAccessToken();
-if (!$token) {
-    die('Failed to obtain access token.');
+$cacheKey = implode(',', $platforms);
+$games = $cache->get($cacheKey);
+
+//If no Cache exists, pull from IGDB API
+if (!$games) {
+    $clientID = $_ENV['CLIENT_ID'];
+    $clientSecret = $_ENV['CLIENT_SECRET'];
+    //Auth
+    $auth = new UpcomingGames\Authentication($clientID, $clientSecret);
+    $token = $auth->getAccessToken();
+    if (!$token) {
+        die('Failed to obtain access token.');
+    }
+    //IGDB Retrieval
+    $igdb = new UpcomingGames\IGDB($clientID, $token);
+    $games = $igdb->fetchUpcomingGames($platforms);
+    //Sort the Games
+    $games = $igdb->sort_list($games);
+    //Set Cache
+    $cache->set($cacheKey, $games);
 }
-//IGDB Retrieval
-$igdb = new UpcomingGames\IGDB($clientID, $token);
-$games = $igdb->fetchUpcomingGames($platforms);
-//Sort the Games
-$games = $igdb->sort_list($games);
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +48,7 @@ $games = $igdb->sort_list($games);
 
     <!-- Logo -->
     <div class="d-flex justify-content-center">
-        <a href="<?php echo $_ENV['APP_URL']; ?>"><img src="../assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
+        <a href="<?php echo $_ENV['APP_URL']; ?>"><img src="assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
     </div>
 
     <h1 class="mb-4">Upcoming Game Releases</h1>
