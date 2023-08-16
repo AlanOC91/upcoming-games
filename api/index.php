@@ -37,6 +37,20 @@ if (!$games) {
     <meta name="description" content="<?php echo $_ENV['APP_NAME']; ?> offers the latest updates on upcoming game releases. Stay informed about the newest titles and release dates across major platforms.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="<?php echo $_ENV['APP_URL']; ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php echo $_ENV['APP_NAME']; ?> - Upcoming Game Releases">
+    <meta property="og:description" content="<?php echo $_ENV['APP_NAME']; ?> offers the latest updates on upcoming game releases. Stay informed about the newest titles and release dates across major platforms.">
+    <meta property="og:image" content="/assets/logo.svg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?php echo $_ENV['APP_URL']; ?>">
+    <meta name="twitter:title" content="<?php echo $_ENV['APP_NAME']; ?> - Upcoming Game Releases">
+    <meta name="twitter:description" content="<?php echo $_ENV['APP_NAME']; ?> offers the latest updates on upcoming game releases. Stay informed about the newest titles and release dates across major platforms.">
+    <meta name="twitter:image" content="/assets/logo.svg">
 </head>
 <body class="bg-dark text-light">
 
@@ -44,7 +58,7 @@ if (!$games) {
 
     <!-- Logo -->
     <div class="d-flex justify-content-center">
-        <a href="<?php echo $_ENV['APP_URL']; ?>"><img src="/assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
+        <a href="<?php echo $_ENV['APP_SECONDARY_URL']; ?>"><img src="/assets/logo.svg" alt="<?php echo $_ENV['APP_NAME']; ?> Logo" width="200"></a>
     </div>
 
     <h1 class="mb-4">Upcoming Game Releases</h1>
