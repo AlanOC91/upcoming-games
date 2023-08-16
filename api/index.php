@@ -1,10 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-//Dot ENV
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 //Check Cache
 $cache = new UpcomingGames\Cache('cache', 21600); // Cache data for 6 hours (21600 seconds)
 $platforms = [48, 167]; // PS4 and PS5
