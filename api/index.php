@@ -43,14 +43,14 @@ if (!$games) {
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $_ENV['APP_NAME']; ?> - Upcoming Game Releases">
     <meta property="og:description" content="<?php echo $_ENV['APP_NAME']; ?> offers the latest updates on upcoming game releases. Stay informed about the newest titles and release dates across major platforms.">
-    <meta property="og:image" content="/assets/logo.svg">
+    <meta property="og:image" content="<?php echo $_ENV['APP_URL']; ?>/assets/logo.svg">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?php echo $_ENV['APP_URL']; ?>">
     <meta name="twitter:title" content="<?php echo $_ENV['APP_NAME']; ?> - Upcoming Game Releases">
     <meta name="twitter:description" content="<?php echo $_ENV['APP_NAME']; ?> offers the latest updates on upcoming game releases. Stay informed about the newest titles and release dates across major platforms.">
-    <meta name="twitter:image" content="/assets/logo.svg">
+    <meta name="twitter:image" content="<?php echo $_ENV['APP_URL']; ?>/assets/logo.svg">
 </head>
 <body class="bg-dark text-light">
 
